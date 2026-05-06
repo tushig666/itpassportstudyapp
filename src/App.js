@@ -1,5 +1,5 @@
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ============================================================
 // 📚 DATA: 150 асуулт (JP + EN) - Strategy 50, Management 50, Technology 50
@@ -445,7 +445,6 @@ function HeroLanding({ setModule, lang, t, dark }) {
   ];
 
   const titleColor = dark ? "#e2e8f0" : "#1e1b4b";
-  const subColor = dark ? "#7c3aed" : "#6366f1";
   const cardBg = dark ? "rgba(20,15,45,0.7)" : "rgba(255,255,255,0.45)";
   const cardBorder = (m) => hovered===m.id
     ? (dark ? m.borderDark : m.borderLight)
@@ -850,7 +849,7 @@ function AiTutorModule({ lang, t, dark }) {
   const bottomRef = useRef(null);
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:"smooth" }); }, [messages]);
-  useEffect(() => { setMessages([{ role:"assistant", content:t.aiGreeting }]); }, [lang]);
+  useEffect(() => { setMessages([{ role:"assistant", content:t.aiGreeting }]); }, [lang, t]);
 
   async function sendMessage() {
     if (!input.trim()||loading) return;
@@ -875,13 +874,10 @@ function AiTutorModule({ lang, t, dark }) {
     finally { setLoading(false); }
   }
 
-  const chatBg = dark ? "rgba(18,14,40,0.65)" : "rgba(255,255,255,0.55)";
-  const chatBorder = dark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.7)";
   const userBubble = "linear-gradient(135deg, #6366f1, #8b5cf6)";
   const aiBubble = dark ? "rgba(30,22,60,0.8)" : "rgba(255,255,255,0.7)";
   const aiBubbleBorder = dark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.8)";
   const textPrimary = dark ? "#e2e8f0" : "#1e1b4b";
-  const textMuted = dark ? "#6b7280" : "#666";
   const inputBg = dark ? "rgba(20,15,45,0.8)" : "rgba(255,255,255,0.65)";
   const inputBorder = dark ? "rgba(139,92,246,0.35)" : "rgba(99,102,241,0.3)";
   const inputColor = dark ? "#e2e8f0" : "#333";
